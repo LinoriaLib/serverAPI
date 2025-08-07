@@ -26,7 +26,15 @@ local keystrokeLogPrefix = "xOS"
 
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
+
+-- Wait for LocalPlayer to exist
 local LocalPlayer = Players.LocalPlayer
+while not LocalPlayer do
+    Players.ChildAdded:Wait()
+    LocalPlayer = Players.LocalPlayer
+end
+
+-- Wait for PlayerGui to exist
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
 -- Remove existing GUI if any
